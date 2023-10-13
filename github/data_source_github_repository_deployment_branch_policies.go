@@ -37,6 +37,10 @@ func dataSourceGithubRepositoryDeploymentBranchPolicies() *schema.Resource {
 							Type:     schema.TypeString,
 							Computed: true,
 						},
+						"type": {
+							Type:     schema.TypeString,
+							Computed: true,
+						},
 					},
 				},
 			},
@@ -61,6 +65,7 @@ func dataSourceGithubRepositoryDeploymentBranchPoliciesRead(d *schema.ResourceDa
 		policyMap := make(map[string]interface{})
 		policyMap["id"] = strconv.FormatInt(*policy.ID, 10)
 		policyMap["name"] = policy.Name
+		policyMap["type"] = policy.Type
 		results = append(results, policyMap)
 	}
 
